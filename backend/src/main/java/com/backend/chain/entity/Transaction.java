@@ -2,13 +2,15 @@ package com.backend.chain.entity;
 
 
 
-public class Transation {
+public class Transaction {
     private Long id;
     private String from;
     private String to;
     private Boolean type;
     private String amount;
     private String price;
+    private String createTime;
+    private String updateTime;
     private int status;
 
     public Long getId() {
@@ -65,5 +67,21 @@ public class Transation {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public void setCreateTime(String createTime){
+        this.createTime = createTime;
+    }
+
+    public String getCreateTime(){
+        return createTime;
+    }
+
+    public void setUpdateTime(String updateTime){
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateTime(){
+        return updateTime;
     }
 }

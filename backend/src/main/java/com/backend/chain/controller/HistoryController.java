@@ -42,7 +42,9 @@ public class HistoryController {
             double elecAmount = historyJsonObject.getDouble("elecAmount");
             double balance = historyJsonObject.getDouble("balance");
             Boolean isDeleted = historyJsonObject.getBoolean("isDeleted");
-            History history = new History(transactionID, timestamp, accountId, elecAmount, balance, isDeleted);
+            String createTime = historyJsonObject.getString("createTime");
+            String updateTime = historyJsonObject.getString("updateTime");
+            History history = new History(transactionID, timestamp, accountId, elecAmount, balance, isDeleted, createTime, updateTime);
             allHistory.add(history);
         }
         return ResponseFactory.buildSuccessResult(allHistory);

@@ -1,6 +1,6 @@
 package com.backend.chain.controller;
 
-import com.backend.chain.entity.Transation;
+import com.backend.chain.entity.Transaction;
 import com.backend.chain.response.Response;
 import com.backend.chain.response.ResponseFactory;
 import com.backend.chain.service.HyperledgerService;
@@ -30,7 +30,7 @@ public class TransactionController {
     TransationService transationService;
 
     @PostMapping("/api/transaction/transfer")
-    public Response doTransaction(Transation req) {
+    public Response doTransaction(Transaction req) {
         byte[] bytes = hyperledgerService.makeTransfer(req.getTo(), req.getFrom(), req.getAmount(), req.getPrice());
         transationService.addTransation(req);
             if (bytes == null) {
@@ -42,7 +42,7 @@ public class TransactionController {
     @GetMapping("/api/get/transaction/{userId}")
     public Response getAllByFromTransactions(@PathVariable("userId") String userId){
         Response response=new Response();
-        List<Transation> list=transationService.getAllByUser(userId);
+        List<Transaction> list=transationService.getAllByUser(userId);
         response.setCode(0);
         response.setMessage("success");
         response.setResult(list);
